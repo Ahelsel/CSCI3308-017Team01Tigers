@@ -4,7 +4,8 @@
 ## Decisions Made 
 
 	1. We'll have a separate list for recipes and groceries. 
-		- Recipes will be from a third-party source (TBD) 
+		- Recipes will be from a third-party source
+			- Spoonacular Recipe API
 		- Groceries/Ingredient will be added/removed by the user
 				- Make a list of groceries for the user to choose from
 
