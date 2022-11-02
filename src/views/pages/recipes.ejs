@@ -1,0 +1,28 @@
+<%- include ('../partials/header') %>
+<%- include ('../partials/menu') %>
+
+
+<main>
+  <div class="container">
+    <div class="col"><%- include ('../partials/message') %></div>
+    <table class="table">
+        <thead>
+            <th>Recipe Name</th>
+        </thead>
+        <tbody>
+            <% var a = results.data 
+            if (a) {
+                a.forEach(el => {  %>
+                    <form action ="<%= el.url %>">
+                    <tr>
+                        <td><%= el.name %></td>
+                    </tr>
+                </form>
+                <% }) 
+            }%>
+        </tbody>
+    </table>
+  </div>
+</main>
+
+<%- include ('../partials/footer') %>

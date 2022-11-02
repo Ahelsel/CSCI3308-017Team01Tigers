@@ -1,36 +1,19 @@
 <%- include ('../partials/header') %>
 <%- include ('../partials/menu') %>
 
-
 <main>
-  <div class="container">
-    <div class="col"><%- include ('../partials/message') %></div>
-    <table class="table">
-        <thead>
-            <th>Event Name</th>
-            <th>Event Image</th>
-            <th>Event Date</th>
-            <th>Event Time</th>
-            <th>Book Now</th>
-        </thead>
-        <tbody>
-            <% var a = results.data 
-            if (a._embedded) {
-                a._embedded.events.forEach(el => {  %>
-                    <form action ="<%= el.url %>">
-                    <tr>
-                        <td><%= el.name %></td>
-                        <td><img src="<%- el.images[0].url %>" alt="views/pages/default-pfp-18.jpg"width="200" height="100"> </img></td>
-                        <td><%= el.dates.start.localDate %></td>
-                        <td><%= el.dates.start.localTime %></td>      
-                        <td><a href="<%= el.url %>" class="btn btn-primary">Book Now </a></td>     
-                    </tr>
-                </form>
-                <% }) 
-            }%>
-        </tbody>
-    </table>
-  </div>
-</main>
+    <div class="container">
+      <!-- THE REST OF YOUR HTML CODE GOES HERE -->
+      <div class="col"><%- include ('../partials/message') %></div>
+      <form action="/register" method = "POST">
+          <label for ="username">Username:</label><br>
+          <input type ="text" id ="username" name="username" value =""><br>
+          <label for ="password">Password:</label><br>
+          <input type ="text" id="password" name ="password" value =""><br>
+          <input type ="submit" value="Submit"><br><br>
+      </form>
+    </div>
+  </main>
+  
 
 <%- include ('../partials/footer') %>
