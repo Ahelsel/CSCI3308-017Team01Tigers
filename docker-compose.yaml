@@ -6,11 +6,7 @@ services:
     expose:
       - '5432'
     volumes:
-<<<<<<< HEAD
       - CSCI3308-017Team01Tigers:/var/lib/postgresql/data
-=======
-      - group-project:/var/lib/postgresql/data
->>>>>>> fc6d6bcdbbfea1e64e76995c7271ad863eafaebe
       - ./src/init_data:/docker-entrypoint-initdb.d
   web:
     image: node:lts
@@ -27,8 +23,4 @@ services:
       - ./src:/home/node/app
     command: 'npm start'
 volumes:
-<<<<<<< HEAD
   CSCI3308-017Team01Tigers:
-=======
-  group-project:
->>>>>>> fc6d6bcdbbfea1e64e76995c7271ad863eafaebe

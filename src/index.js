@@ -4,7 +4,7 @@ const pgp = require('pg-promise')();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-// const axios = require('axios');
+const axios = require('axios');
 
 // database configuration
 const dbConfig = {
@@ -129,7 +129,7 @@ const dbConfig = {
           url: `https://api.spoonacular.com/food/search`,
             method: 'GET',
             dataType:'json',
-            ?apiKey: req.session.user.api_key,
+            apiKey: req.session.user.api_key,
             params: {
                 "x-api-key": req.session.user.api_key,
                 "query": "pasta", //you can choose any food search here
@@ -162,14 +162,5 @@ const dbConfig = {
       console.log('Logged out Successfully.');
     });
 
-      app.get('/', function(req,res) {
-        res.render('pages/home.ejs');
-      });
-
       app.listen(3000);
       console.log('Server is listening on port 3000');
-
-
-      app.get('/login', function(req,res) {
-        res.render('pages/login.ejs');
-      });
