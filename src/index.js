@@ -27,9 +27,10 @@ const dbConfig = {
       console.log('ERROR:', error.message || error);
     });
 
-    app.set("view engine", "ejs");
+    app.set('view engine', 'ejs');
+
     app.use(bodyParser.json());
-  
+
     app.use(
         session({
           secret: process.env.SESSION_SECRET,
@@ -38,14 +39,12 @@ const dbConfig = {
         })
       );
       
-    app.use(
+      app.use(
         bodyParser.urlencoded({
           extended: true,
         })
-    );
-
-
-    app.get('/', (req, res) =>{
+      );
+      app.get('/', (req, res) =>{
         res.redirect('/login'); //this will call the /anotherRoute route in the API
       });
       
@@ -79,8 +78,8 @@ const dbConfig = {
         const username = req.body.username;
         const query = "SELECT username, password FROM users WHERE username = $1";
         const values = [username];
-        db.one(query, values)//this is where the query variable is actually being executed, and it's using values for the $1 part. (maybe?
-          .then(async(data) => { //data is connected to the query
+        db.one(query, values)
+          .then(async(data) => {
             
             user.password = data.password;
             const match = await bcrypt.compare(req.body.password, user.password); //req.body.password is defined
@@ -96,7 +95,7 @@ const dbConfig = {
                     api_key: process.env.API_KEY,
                 };
                 req.session.save();
-                res.redirect("/discover");
+                res.redirect("/recipes"); //just like the discover page from lab9 
             }
           })
           .catch((err) => {
@@ -125,28 +124,29 @@ const dbConfig = {
     app.use(auth);
 
 
-    app.get("/discover", (req, res) => {
+    app.get("/recipes", (req, res) => {
       axios({
-          url: `https://app.ticketmaster.com/discovery/v2/events.json`,
+          url: `https://api.spoonacular.com/food/search`,
             method: 'GET',
             dataType:'json',
+            ?apiKey: req.session.user.api_key,
             params: {
-                "apikey": req.session.user.api_key,
-                "keyword": "Matt Maeson", //you can choose any artist/event here
+                "x-api-key": req.session.user.api_key,
+                "query": "pasta", //you can choose any food search here
                 "size": 10,
             }
         })
         .then((results) => {
           // the results will be displayed on the terminal if the docker containers are running
          // Send some parameters
-            res.render("pages/discover", {
+            res.render("pages/recipes", {
             results,
           });
         })
         .catch((err) => {
           //If the API call fails, render pages/discover with an empty results array results: [] and the error message.
           console.log(err);
-          res.render("pages/discover", {
+          res.render("pages/recipes", {
             results: [],
             error: true,
             message: err.message,
@@ -162,5 +162,5 @@ const dbConfig = {
       console.log('Logged out Successfully.');
     });
 
-    app.listen(3000);
-    console.log('Server is listening on port 3000');
+      app.listen(3000);
+      console.log('Server is listening on port 3000');
