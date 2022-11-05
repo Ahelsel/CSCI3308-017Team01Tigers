@@ -4,7 +4,7 @@ const pgp = require('pg-promise')();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const axios = require('axios');
+// const axios = require('axios');
 
 // database configuration
 const dbConfig = {
@@ -162,5 +162,14 @@ const dbConfig = {
       console.log('Logged out Successfully.');
     });
 
+      app.get('/', function(req,res) {
+        res.render('pages/home.ejs');
+      });
+
       app.listen(3000);
       console.log('Server is listening on port 3000');
+
+
+      app.get('/login', function(req,res) {
+        res.render('pages/login.ejs');
+      });
