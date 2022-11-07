@@ -1,0 +1,12 @@
+﻿Week 1: Project Meeting
+
+
+Notes for Meeting
+* Group evaluation and individual evaluation
+   * Individual (# of commits made)
+      * Make at least 3 commits per week
+      * Commit code through branches, not through main branch
+   * Group (what we did when we were together and how we collaborated)
+* TA will be checking ReadMe file, release notes, and the project dashboard
+* Make sure not to skip group meetings!!
+* Create endpoints, set up structure and then start building front-end from that
