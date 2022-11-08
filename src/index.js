@@ -44,6 +44,7 @@ const dbConfig = {
           extended: true,
         })
       );
+      app.use("/resources/css", express.static(__dirname + "/resources/css"))
       app.get('/', (req, res) =>{
         res.redirect('/home'); //this will call the /anotherRoute route in the API
       });
