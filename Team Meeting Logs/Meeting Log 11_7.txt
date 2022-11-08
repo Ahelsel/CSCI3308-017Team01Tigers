@@ -1,0 +1,8 @@
+﻿Meeting Log for 11/7 meeting
+* Discussed how to push branches 
+* Made branches
+* Went over updated index.js
+* Planned updates to index.js, potential fixes with API
+   * Difficulties arising from accessing recipes with our API
+* Went over plans for future
+* Discussed Home, Login, Grocery List pages need to be added.
