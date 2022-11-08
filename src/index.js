@@ -52,6 +52,7 @@ const dbConfig = {
       res.render('pages/register');
     });
 
+
     app.post('/register', async (req, res) => {
         const username = req.body.username;
         const hash = await bcrypt.hash(req.body.password, 10);
@@ -68,6 +69,9 @@ const dbConfig = {
     app.get("/login", (req, res) => {
         res.render("pages/login");
       });
+    app.get("/home", (req, res) => {
+      res.render("pages/home");
+    })
 
     const user = {
       username: undefined,
