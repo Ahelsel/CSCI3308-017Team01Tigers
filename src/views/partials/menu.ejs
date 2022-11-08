@@ -1,36 +1,18 @@
 <header>
-    <nav class="navbar navbar-expand-sm border-bottom">
-      <div class="container">
-        <button
-          class="navbar-toggler ms-auto"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbar-collapse"
-          aria-controls="navbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-          <ul class="navbar-nav me-auto">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/"></a>
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-<<<<<<< HEAD
-                <a href="/discover"> Recipes</a>
-              <!-- TO-DO: For Discover, add a <a> tag with an attribute href to call the '/discover' API -->
+                <a class = "nav-link" href = "/">Home</a>
+                <!-- TO-DO: For 'Home', Add a <a> tag with an attribute href to call the '/' API that navigates to home page if logged in, or login page if not -->
             </li>
-          </ul>
-          <div class="nav-item me-1">
-            <!-- TO-DO: For Logout, add a <a> tag with an attribute href to call the '/logout API -->
-                <a href="/logout"> Logout</a>
-=======
-              <a class="nav-link" href='/login' style="color:inherit;">Login</a>
+            <li class="nav-item">
+                <a class = "nav-link" href = "/login">Login</a>
+                <!-- TO-DO: For 'My Courses', add a <a> tag with an attribute href to call the '/courses?taken=true' API that navigates to courses page, showing the courses the student has taken, if logged in, or login page if not -->
             </li>
-          </ul>
-          <div class="nav-item me-1">
-            <a class="nav-link" href='/' style="color:inherit;">Home</a>
->>>>>>> fc6d6bcdbbfea1e64e76995c7271ad863eafaebe
-          </div>
-        </div>
-      </div>
+            <li class = "nav-item">
+              <a class = "nav-link" href = "/recipes">Recipes</a>
+            </li>
+        </ul>
     </nav>
-   </header>
+</header>

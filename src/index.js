@@ -45,7 +45,7 @@ const dbConfig = {
         })
       );
       app.get('/', (req, res) =>{
-        res.redirect('/login'); //this will call the /anotherRoute route in the API
+        res.redirect('/home'); //this will call the /anotherRoute route in the API
       });
       
     app.get('/register', (req, res) => {
