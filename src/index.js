@@ -46,7 +46,7 @@ const dbConfig = {
       );
       app.use("/resources/css", express.static(__dirname + "/resources/css"))
       app.get('/', (req, res) =>{
-        res.redirect('/home'); //this will call the /anotherRoute route in the API
+        res.redirect('/groceries'); //this will call the /anotherRoute route in the API
       });
       
     app.get('/register', (req, res) => {
@@ -70,8 +70,8 @@ const dbConfig = {
     app.get("/login", (req, res) => {
         res.render("pages/login");
       });
-    app.get("/home", (req, res) => {
-      res.render("pages/home");
+    app.get("/groceries", (req, res) => {
+      res.render("pages/groceries");
     })
 
     const user = {
