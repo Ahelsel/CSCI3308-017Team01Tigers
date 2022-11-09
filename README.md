@@ -2,7 +2,7 @@
 
 **Vision Statement:** Go Groceries is here to help college students shop at a grocery store, while providing great budget suggestions for healthy alternatives to the typical college diet.
 
-## Application Description
+## Application Description:
 
 For the average college student, Go Grocers offers simplicity to the grocery-buying process, with the ability to type in a grocery item and the quantity to populate your grocery list. There'll also be a list that will keep track of the items that you already have and will show recipes that can be mdae with those items. Once the item is obtained, users can check the item which will take it off the list. When adding a recipe, all the ingredients needed fo the recipe will automatically be added to the grocery list if not already there. 
 
@@ -21,11 +21,11 @@ In order to save on time and add more variety, we'll populate our recipes from t
 * JavaScript
 * CSS
 
-## Prerequisites to run the application (software that needs to be installed to run the application)
+## Prerequisites to run the application (software that needs to be installed to run the application):
 
 * Docker Desktop (follow these instruction to install Docker Desktop: https://docs.docker.com/desktop/)
 
-## Instructions to run the application locally
+## Instructions to run the application locally:
 
 ### Running for first time:
 
