@@ -45,10 +45,12 @@ const dbConfig = {
         })
       );
       app.use("/resources/css", express.static(__dirname + "/resources/css"))
+
+      let newGroceryItems = [];
       app.get('/', (req, res) =>{
-        res.redirect('/groceries'); //this will call the /anotherRoute route in the API
+        // res.redirect('/groceries'); //this will call the /anotherRoute route in the API
+        res.render("pages/groceries");
       });
-      
     app.get('/register', (req, res) => {
       res.render('pages/register');
     });
@@ -67,12 +69,18 @@ const dbConfig = {
           });
     });
 
-    app.get("/login", (req, res) => {
+    app.get('/login', (req, res) => {
         res.render("pages/login");
       });
-    app.get("/groceries", (req, res) => {
-      res.render("pages/groceries");
+    app.get('/groceries', (req, res) => {
+      // res.render("pages/groceries");
+      res.render('pages/groceries', {newGroceries: newGroceryItems});
     })
+    app.post('/groceries', (req, res) =>{
+      let newGrocery = req.body.newGrocery; 
+      newGroceryItems.push(newGrocery);
+      res.redirect('/groceries');
+    });
 
     const user = {
       username: undefined,
