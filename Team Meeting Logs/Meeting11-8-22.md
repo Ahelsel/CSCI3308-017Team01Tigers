@@ -42,8 +42,9 @@ Add: Number of commits you've done
         - 
         - 
 
-    Evan:
-        - 
+    Evan: 13 Commits
+        - README.md (done) 
+        - Insert user input from groceries page into database 
         - 
 
     Sam:
