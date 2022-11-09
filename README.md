@@ -46,10 +46,10 @@ In order to save on time and add more variety, we'll populate our recipes from t
 4. After the message `Database connection successful` displays, you can open the website on a browser with the hyperlink http://localhost:3000
 5. From here you can login on the login page using the same username and password that were used to register. 
 
-###### How to run tests:
+## How to run tests:
 
 N/A
 
-###### Link to the deployed application:
+## Link to the deployed application:
 
 http://localhost:3000
