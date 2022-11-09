@@ -3,27 +3,25 @@
 
 <main>
   <link rel = 'stylesheet' href = '../../resources/css/project.css'>
-    <div class="container">
+    <div class = "container">
       <h2>Grocery List</h2>
-      <div class="card space-between-cards" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Carrots</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Quantity: 2</h6>
+      <% newGroceries.forEach(grocery => { %>
+        <div class="card" style="width: 18rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= grocery %>
+              <form style = "display: inline;">              
+                <label class="checkbox-inline checkboxes">
+                  <input type="checkbox" value="">
+                </label>
+              </form>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="card space-between-cards" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Baking Soda</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Quantity: 1</h6>
-        </div>
-      </div>
-      <div class="card space-between-cards" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Chocolate Chips</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Quantity: 3</h6>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary">Add Item</button>
+      <% }) %>
+      <form action = "/groceries" method = "post">
+        <input type = "text" name ="newGrocery">
+        <button type = "submit" class = "btn btn-primary">Add Item</button>
+      </form>
     </div>
   </main>
 
