@@ -1,28 +1,55 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=9019683&assignment_repo_type=AssignmentRepo)
-# CSCI 3308 Lab 9: Web Services
+# Go Groceries
 
-|                                                Course Website                                                 |                                                  Canvas                                                    |                                              Piazza                                               |
-| :-----------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
-| [![Course Website](https://img.shields.io/badge/Labs-Lab9-0A4D99)](https://cuboulder-csci-3308.herokuapp.com/lab9) | [![Canvas](https://img.shields.io/badge/Canvas-CSCI3308-CFB87C)](https://canvas.colorado.edu/courses/86400) | [![Piazza](https://img.shields.io/badge/-Piazza-3e7aab)](https://piazza.com/class/l6xrg9j9pa37pa) |
+**Vision Statement:** Go Groceries is here to help college students shop at a grocery store, while providing great budget suggestions for healthy alternatives to the typical college diet.
 
-## Overview
+## Application Description
 
-In this lab, we will use REST APIs to create a web application to display data from the ticketmaster using EJS. To receive credit for this lab, you MUST show your work to the TA during the lab, and push to the github by the deadline. Please note that submissions will be due right before your respective lab sessions in the following week. For Example, If your lab is on this Friday 10 AM, the submission deadline will be next Friday 10 AM. There is a "NO LATE SUBMISSIONS" policy for labs.
+For the average college student, Go Grocers offers simplicity to the grocery-buying process, with the ability to type in a grocery item and the quantity to populate your grocery list. There'll also be a list that will keep track of the items that you already have and will show recipes that can be mdae with those items. Once the item is obtained, users can check the item which will take it off the list. When adding a recipe, all the ingredients needed fo the recipe will automatically be added to the grocery list if not already there. 
 
-Please follow the instructions on the [course website](https://cuboulder-csci-3308.herokuapp.com/lab9). Note that the above badges serve as quick links to the lab instructions, Course Canvas, and Course Piazza.
+In order to save on time and add more variety, we'll populate our recipes from the trustworthy recipe API *Spoonacular*. These recipes will be displayed in a different tab in a grid layout where users can view the recipes and have an option to add the recipe to their recipe list. 
 
-Please refer to the lab instructions for more details.
+## Contributors:
 
-## Submission Guidelines
+* **Sam Sherman**, sham-serman, sash3295@colorado.edu
+* **Evan Thompson**, ze3roop, evth6324@colorado.edu
+* **Kaitlyn Huynh**, kaitlynh770, kahu1074@colorado.edu
+* **Anthony Helsel**, Ahelsel, anhe8976@colorado.edu
 
-To receive credit for this lab, you MUST check in with your TA during lab and upload your files to this repo by the deadline.
+## Technology Stack used for the project: 
 
-Make sure to add, commit, and push your changes. You should run the following commands inside your local git directory. Make sure to double-check your submission through the browser.
+* EJS
+* JavaScript
+* CSS
 
-In a terminal opened inside your repo:
+## Prerequisites to run the application (software that needs to be installed to run the application)
 
-```bash
-git add .
-git commit -m "API calls and EJS Pages added"
-git push
-```
+* Docker Desktop (follow these instruction to install Docker Desktop: https://docs.docker.com/desktop/)
+
+## Instructions to run the application locally
+
+###### Running for first time:
+
+1. Clone the repository locally
+2. Open Docker Desktop
+3. Use a terminal to go to the directory of the repository on your local system using the command: `cd CSCI3308-017Team01Tigers/src`
+4. Delete node_modules folder with: `rm -r node_modules`
+5. Go back to main directory using `cd ..`
+6. Run docker compose with the command: `docker compose up`
+7. After the message `Database connection successful` displays, you can open the website on a browser with the hyperlink http://localhost:3000 
+8. From here you can register with a username and a password.
+
+###### Running after first time: 
+
+1. Open Docker Desktop
+2. Use a terminal to go to the directory of the repository on your local system using the command: `cd CSCI3308-017Team01Tigers`
+3. Run docker compose with the command: `docker compose up`
+4. After the message `Database connection successful` displays, you can open the website on a browser with the hyperlink http://localhost:3000
+5. From here you can login on the login page using the same username and password that were used to register. 
+
+###### How to run tests:
+
+N/A
+
+###### Link to the deployed application:
+
+http://localhost:3000
