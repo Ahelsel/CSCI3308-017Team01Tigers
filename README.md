@@ -27,7 +27,7 @@ In order to save on time and add more variety, we'll populate our recipes from t
 
 ## Instructions to run the application locally
 
-###### Running for first time:
+### Running for first time:
 
 1. Clone the repository locally
 2. Open Docker Desktop
@@ -38,7 +38,7 @@ In order to save on time and add more variety, we'll populate our recipes from t
 7. After the message `Database connection successful` displays, you can open the website on a browser with the hyperlink http://localhost:3000 
 8. From here you can register with a username and a password.
 
-###### Running after first time: 
+### Running after first time: 
 
 1. Open Docker Desktop
 2. Use a terminal to go to the directory of the repository on your local system using the command: `cd CSCI3308-017Team01Tigers`
