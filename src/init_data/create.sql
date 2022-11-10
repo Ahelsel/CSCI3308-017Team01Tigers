@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users(
     username VARCHAR(50) PRIMARY KEY,
@@ -26,5 +25,3 @@ CREATE TABLE recipes(
     recipe_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL
 );
-
-

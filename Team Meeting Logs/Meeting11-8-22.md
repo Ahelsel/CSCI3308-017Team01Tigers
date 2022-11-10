@@ -44,9 +44,9 @@ Add: Number of commits you've done
 
     Evan:
         - Readme.md
-        - Did app.get("/groceries")
-        - Did app.post("/groceries")
-        - Updated create.sql
+        - Did app.get("/groceries"). Now able to view groceries on the list, but only with a hard coded grocery_list_id at the moment.
+        - Did app.post("/groceries"). Now able to add groceries and respective quantities to the list, but only with a hard coded grocery_list_id at the moment.
+        - Updated create.sql tables to be more coherent.
     Sam:
         - 
         - 
