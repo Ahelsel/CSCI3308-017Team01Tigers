@@ -42,11 +42,11 @@ Add: Number of commits you've done
         - 
         - 
 
-    Evan:
-        - Readme.md
+    Evan: 18 commits Total
+        - Did Readme.md.
         - Did app.get("/groceries"). Now able to view groceries on the list, but only with a hard coded grocery_list_id at the moment.
         - Did app.post("/groceries"). Now able to add groceries and respective quantities to the list, but only with a hard coded grocery_list_id at the moment.
-        - Updated create.sql tables to be more coherent.
+        - Updated create.sql tables to be more coherent, and added an insert for the hard coded grocery_list_id.
     Sam:
         - 
         - 
