@@ -8,7 +8,7 @@ const axios = require('axios');
 
 // database configuration
 const dbConfig = {
-    host: 'db',
+    host: "db",
     port: 5432,
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
@@ -27,7 +27,7 @@ const dbConfig = {
       console.log('ERROR:', error.message || error);
     });
 
-    app.set('view engine', 'ejs');
+    app.set("view engine", "ejs");
 
     app.use(bodyParser.json());
 
@@ -46,17 +46,19 @@ const dbConfig = {
       );
       app.use("/resources/css", express.static(__dirname + "/resources/css"))
 
-      let newGroceryItems = [];
-      app.get('/', (req, res) =>{
-        // res.redirect('/groceries'); //this will call the /anotherRoute route in the API
+      //let newGroceryItems = [];
+
+      app.get("/", (req, res) =>{
+        // res.redirect('/groceries');
         res.render("pages/groceries");
       });
-    app.get('/register', (req, res) => {
-      res.render('pages/register');
+
+    app.get("/register", (req, res) => {
+      res.render("pages/register");
     });
 
 
-    app.post('/register', async (req, res) => {
+    app.post("/register", async (req, res) => {
         const username = req.body.username;
         const hash = await bcrypt.hash(req.body.password, 10);
         const query = "INSERT INTO users (username, password) VALUES ($1, $2);"
@@ -69,46 +71,39 @@ const dbConfig = {
           });
     });
 
-    app.get('/login', (req, res) => {
+    app.get("/login", (req, res) => {
         res.render("pages/login");
       });
-    app.get('/groceries', (req, res) => {
-      // res.render("pages/groceries");
-      res.render('pages/groceries', {newGroceries: newGroceryItems});
-    })
-    app.post('/groceries', (req, res) =>{
-      let newGrocery = req.body.newGrocery; 
-      newGroceryItems.push(newGrocery);
-      res.redirect('/groceries');
-    });
-
+    
     const user = {
       username: undefined,
       password: undefined,
     };
 
     app.post("/login", (req, res) => {
+      console.log("here11");
         const username = req.body.username;
         const query = "SELECT username, password FROM users WHERE username = $1";
         const values = [username];
         db.one(query, values)
           .then(async(data) => {
-            
-            user.password = data.password;
-            const match = await bcrypt.compare(req.body.password, user.password); //req.body.password is defined
-            
+            const match = await bcrypt.compare(req.body.password, data.password);
+            console.log(req.body.password);
             if(!match){
                 res.render("pages/login", {
                   data,
                   message: "Incorrect username or password.",
                 });
             }
-            else{
+
+            else{ //if user logs in with correct password to an already existing username 
+              user.password = data.password;
+              user.username = data.username;
                 req.session.user = {
                     api_key: process.env.API_KEY,
                 };
                 req.session.save();
-                res.redirect("/recipes"); //just like the discover page from lab9 
+                res.redirect("/groceries"); //just like the discover page from lab9 
             }
           })
           .catch((err) => {
@@ -124,9 +119,12 @@ const dbConfig = {
           })
       });
 
+      
+
     // Authentication Middleware.
     const auth = (req, res, next) => {
       if (!req.session.user) {
+        console.log("here");
         // Default to register page.
         return res.redirect('/register');
     }
@@ -136,6 +134,56 @@ const dbConfig = {
     // Authentication Required
     app.use(auth);
 
+    
+    
+
+
+    app.get("/groceries", (req, res) => {  
+      console.log("hewhwehherwwhrehreh");
+      //query to list grocery list of user
+      const username = user.username;
+      const query = 
+        "SELECT name, quantity FROM ingredients WHERE ingredient_id = (SELECT ingredient_id FROM grocery_list_to_ingredients WHERE grocery_list_id = (SELECT grocery_list_id FROM users_to_grocery_lists WHERE username = $1))";
+      //showing grocery list 
+      const value = [username];
+      db.any(query, value)
+        .then((groceries) => {
+          console.log("here");
+          console.log(groceries.username);
+          res.render("pages/groceries", {
+            groceries,
+          });
+        })
+        .catch((err) => { // display empty table if grocery_list_id is not found.
+          res.render("pages/groceries", {
+            groceries: [],
+            error: true,
+            message : err.message,
+          });
+        });
+      //res.render('pages/groceries', {newGroceries: newGroceryItems});
+    });
+
+    app.post('/groceries', (req, res) =>{ // same here
+      const newGrocery = req.body.newGrocery; 
+      const quantity = req.body.quantity;
+      //newGroceryItems.push(newGrocery);
+      const query = "INSERT INTO ingredients (name, quantity) VALUES ($1, $2);"
+      db.any(query, [newGrocery, quantity])
+        .then((groceries) => {
+          res.render("/groceries", {
+            groceries,
+          });
+        })
+        .catch((err) => {
+          res.render("pages/groceries", {
+            groceries,
+            error: true,
+            message : err.message,
+          });
+        });
+      //res.redirect('/groceries');
+    });
 
     app.get("/recipes", (req, res) => {
       axios({

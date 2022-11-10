@@ -4,11 +4,12 @@
 <main>
   <link rel = 'stylesheet' href = '../../resources/css/project.css'>
     <div class = "container">
+      <div class="col"><%- include ('../partials/message') %></div>
       <h2>Grocery List</h2>
-      <% newGroceries.forEach(grocery => { %>
+      <% groceries.forEach(grocery => { %>
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= grocery %>
+            <li class="list-group-item"><%= grocery.grocery_list_id %>
               <form style = "display: inline;">              
                 <label class="checkbox-inline checkboxes">
                   <input type="checkbox" value="">
@@ -20,6 +21,7 @@
       <% }) %>
       <form action = "/groceries" method = "post">
         <input type = "text" name ="newGrocery">
+        <input type = "text" name ="quantity">
         <button type = "submit" class = "btn btn-primary">Add Item</button>
       </form>
     </div>
