@@ -143,10 +143,10 @@ const dbConfig = {
       //query to list grocery list of user
       const username = user.username;
       const query = 
-        "SELECT name, quantity FROM ingredients WHERE ingredient_id = (SELECT ingredient_id FROM grocery_list_to_ingredients WHERE grocery_list_id = (SELECT grocery_list_id FROM users_to_grocery_lists WHERE username = $1))";
+        "SELECT * FROM ingredients";
       //showing grocery list 
       const value = [username];
-      db.any(query, value)
+      db.any(query)
         .then((groceries) => {
           console.log("here");
           console.log(groceries.username);
@@ -164,16 +164,15 @@ const dbConfig = {
       //res.render('pages/groceries', {newGroceries: newGroceryItems});
     });
 
-    app.post('/groceries', (req, res) =>{ // same here
+    app.post("/groceries", (req, res) =>{ // same here
       const newGrocery = req.body.newGrocery; 
       const quantity = req.body.quantity;
+      const username = user.username;
       //newGroceryItems.push(newGrocery);
       const query = "INSERT INTO ingredients (name, quantity) VALUES ($1, $2);"
       db.any(query, [newGrocery, quantity])
         .then((groceries) => {
-          res.render("/groceries", {
-            groceries,
-          });
+          res.redirect("/groceries");
         })
         .catch((err) => {
           res.render("pages/groceries", {

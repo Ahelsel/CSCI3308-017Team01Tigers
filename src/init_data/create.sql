@@ -24,27 +24,16 @@ CREATE TABLE recipes(
     name VARCHAR(100) NOT NULL
 );
 
-DROP TABLE IF EXISTS users_to_grocery_lists;
-CREATE TABLE users_to_grocery_lists(
+DROP TABLE IF EXISTS users_to_grocery;
+CREATE TABLE users_to_grocery(
     username VARCHAR(50),
     grocery_list_id SMALLINT
 );
 
-DROP TABLE IF EXISTS grocery_list_to_ingredients;
-CREATE TABLE grocery_list_to_ingredients(
-    grocery_list_id SMALLINT,
+DROP TABLE IF EXISTS users_to_ingredients;
+CREATE TABLE users_to_ingredients(
+    username SMALLINT,
     ingredient_id SMALLINT
 );
 
-DROP TABLE IF EXISTS users_to_recipes;
-CREATE TABLE users_to_recipes(
-    username VARCHAR(50),
-    recipe_id SMALLINT
-);
-
-DROP TABLE IF EXISTS recipes_to_ingredients;
-CREATE TABLE recipes_to_ingredients(
-    recipe_id SMALLINT,
-    ingredient_id SMALLINT
-);
 

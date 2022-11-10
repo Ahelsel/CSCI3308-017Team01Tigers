@@ -6,10 +6,10 @@
     <div class = "container">
       <div class="col"><%- include ('../partials/message') %></div>
       <h2>Grocery List</h2>
-      <% groceries.forEach(grocery => { %>
+      <% groceries.forEach(el => { %>
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= grocery.grocery_list_id %>
+            <li class="list-group-item"><%= el.name %>, <%= el.quantity %>
               <form style = "display: inline;">              
                 <label class="checkbox-inline checkboxes">
                   <input type="checkbox" value="">
@@ -22,7 +22,7 @@
       <form action = "/groceries" method = "post">
         <input type = "text" name ="newGrocery">
         <input type = "text" name ="quantity">
-        <button type = "submit" class = "btn btn-primary">Add Item</button>
+        <button type = "submit" class = "btn btn-primary">Add Item</button> 
       </form>
     </div>
   </main>
