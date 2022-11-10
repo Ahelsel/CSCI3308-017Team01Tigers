@@ -43,9 +43,10 @@ Add: Number of commits you've done
         - 
 
     Evan:
-        - 
-        - 
-
+        - Readme.md
+        - Did app.get("/groceries")
+        - Did app.post("/groceries")
+        - Updated create.sql
     Sam:
         - 
         - 

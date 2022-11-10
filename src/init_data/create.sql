@@ -8,32 +8,23 @@ CREATE TABLE users(
 DROP TABLE IF EXISTS grocery_list CASCADE;
 CREATE TABLE grocery_list(
     grocery_list_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
+    name VARCHAR(100) NOT NULL,
+    username VARCHAR(50)
 );
 
-DROP TABLE IF EXISTS ingredients;
-CREATE TABLE ingredients(
-    ingredient_id SERIAL PRIMARY KEY,
+DROP TABLE IF EXISTS grocery_list_items;
+CREATE TABLE grocery_list_items(
+    grocery_list_items_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    quantity SMALLINT
+    quantity SMALLINT,
+    grocery_list_id SMALLINT,
+    FOREIGN KEY (grocery_list_id) REFERENCES grocery_list (grocery_list_id)
 );
 
 DROP TABLE IF EXISTS recipes;
 CREATE TABLE recipes(
     recipe_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL
-);
-
-DROP TABLE IF EXISTS users_to_grocery;
-CREATE TABLE users_to_grocery(
-    username VARCHAR(50),
-    grocery_list_id SMALLINT
-);
-
-DROP TABLE IF EXISTS users_to_ingredients;
-CREATE TABLE users_to_ingredients(
-    username SMALLINT,
-    ingredient_id SMALLINT
 );
 
 

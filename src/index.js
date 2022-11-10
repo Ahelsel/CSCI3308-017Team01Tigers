@@ -81,14 +81,12 @@ const dbConfig = {
     };
 
     app.post("/login", (req, res) => {
-      console.log("here11");
         const username = req.body.username;
         const query = "SELECT username, password FROM users WHERE username = $1";
         const values = [username];
         db.one(query, values)
           .then(async(data) => {
             const match = await bcrypt.compare(req.body.password, data.password);
-            console.log(req.body.password);
             if(!match){
                 res.render("pages/login", {
                   data,
@@ -103,7 +101,7 @@ const dbConfig = {
                     api_key: process.env.API_KEY,
                 };
                 req.session.save();
-                res.redirect("/groceries"); //just like the discover page from lab9 
+                res.redirect("/groceries");
             }
           })
           .catch((err) => {
@@ -124,7 +122,6 @@ const dbConfig = {
     // Authentication Middleware.
     const auth = (req, res, next) => {
       if (!req.session.user) {
-        console.log("here");
         // Default to register page.
         return res.redirect('/register');
     }
@@ -139,38 +136,35 @@ const dbConfig = {
 
 
     app.get("/groceries", (req, res) => {  
-      console.log("hewhwehherwwhrehreh");
       //query to list grocery list of user
       const username = user.username;
       const query = 
-        "SELECT * FROM ingredients";
-      //showing grocery list 
+        "SELECT * FROM grocery_list_items WHERE grocery_list_id = 1";
       const value = [username];
-      db.any(query)
+      db.any(query, value)
         .then((groceries) => {
-          console.log("here");
-          console.log(groceries.username);
           res.render("pages/groceries", {
             groceries,
           });
         })
-        .catch((err) => { // display empty table if grocery_list_id is not found.
+        .catch((err) => {
           res.render("pages/groceries", {
             groceries: [],
             error: true,
             message : err.message,
           });
         });
-      //res.render('pages/groceries', {newGroceries: newGroceryItems});
     });
 
-    app.post("/groceries", (req, res) =>{ // same here
+    app.post("/groceries", (req, res) =>{
       const newGrocery = req.body.newGrocery; 
       const quantity = req.body.quantity;
+      const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
       const username = user.username;
-      //newGroceryItems.push(newGrocery);
-      const query = "INSERT INTO ingredients (name, quantity) VALUES ($1, $2);"
-      db.any(query, [newGrocery, quantity])
+      
+
+      const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3);"
+      db.any(query, [newGrocery, quantity, grocery_list_id])
         .then((groceries) => {
           res.redirect("/groceries");
         })
@@ -181,7 +175,6 @@ const dbConfig = {
             message : err.message,
           });
         });
-      //res.redirect('/groceries');
     });
 
     app.get("/recipes", (req, res) => {
