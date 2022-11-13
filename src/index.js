@@ -50,7 +50,7 @@ const dbConfig = {
 
       app.get("/", (req, res) =>{
         // res.redirect('/groceries');
-        res.render("pages/groceries");
+        res.render("pages/login");
       });
 
     app.get("/register", (req, res) => {
@@ -131,10 +131,6 @@ const dbConfig = {
     // Authentication Required
     app.use(auth);
 
-    
-    
-
-
     app.get("/groceries", (req, res) => {  
       //query to list grocery list of user
       const username = user.username;
@@ -161,8 +157,7 @@ const dbConfig = {
       const quantity = req.body.quantity;
       const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
       const username = user.username;
-      
-
+    
       const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3);"
       db.any(query, [newGrocery, quantity, grocery_list_id])
         .then((groceries) => {
