@@ -172,6 +172,12 @@ const dbConfig = {
         });
     });
 
+    app.post("/groceries/checked", (req, res) => {
+      const { checkGrocery } = req.body;
+      console.log(checkGrocery);
+      res.render("pages/groceries");
+    });
+
     app.get("/recipes", (req, res) => {
       axios({
           url: `https://api.spoonacular.com/recipes/random?apiKey=${req.session.user.api_key}`,
