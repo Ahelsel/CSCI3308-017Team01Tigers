@@ -174,21 +174,22 @@ const dbConfig = {
 
     app.get("/recipes", (req, res) => {
       axios({
-          url: `https://api.spoonacular.com/food/search`,
+          url: `https://api.spoonacular.com/recipes/random?apiKey=${req.session.user.api_key}`,
             method: 'GET',
             dataType:'json',
             apiKey: req.session.user.api_key,
             params: {
                 "x-api-key": req.session.user.api_key,
-                "query": "pasta", //you can choose any food search here
-                "size": 10,
+                limitLicense: true,
+                "number": 25,
             }
         })
         .then((results) => {
           // the results will be displayed on the terminal if the docker containers are running
          // Send some parameters
+            console.log(results.data.recipes);
             res.render("pages/recipes", {
-            results,
+            results: results.data.recipes,
           });
         })
         .catch((err) => {

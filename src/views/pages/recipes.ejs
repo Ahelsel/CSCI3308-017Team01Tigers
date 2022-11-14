@@ -4,24 +4,25 @@
 
 <main>
   <div class="container">
+    <h2 style="padding-top: 10px;">Recipes</h2>
     <div class="col"><%- include ('../partials/message') %></div>
-    <table class="table">
-        <thead>
-            <th>Recipe Name</th>
-        </thead>
-        <tbody>
-            <% var a = results.data 
-            if (a) {
-                a.forEach(el => {  %>
-                    <form action ="<%= el.url %>">
-                    <tr>
-                        <td><%= el.name %></td>
-                    </tr>
-                </form>
-                <% }) 
-            }%>
-        </tbody>
-    </table>
+    
+    <!-- Putting the Recipes into cards -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% results.data.recipes.forEach(item => { %>
+            <div class="col" style="padding:10px">
+                <div class="card" style="width:250px">
+                    <% console.log(item.image) %>
+                    <img class="card-img-top" src=<%= item.image%> >
+                    <div class="card-body">
+                        <h5 class="card-title"><%= item.title %></h5>
+                        <p></p>
+                        <a href="" class="btn btn-primary">Add</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
   </div>
 </main>
 
