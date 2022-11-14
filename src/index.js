@@ -187,7 +187,8 @@ const dbConfig = {
         .then((results) => {
           // the results will be displayed on the terminal if the docker containers are running
          // Send some parameters
-            console.log(results);
+            //console.log(results);
+            console.log(results.data.recipes[0].extendedIngredients);
             res.render("pages/recipes", {
             results: results,
           });
@@ -201,6 +202,51 @@ const dbConfig = {
             message: err.message,
           });
         });
+    });
+
+    app.get("/getrecipe", (req, res) => {
+      //console.log("REQ BODY RECIPE ID: " + req.body.recipe_id);
+
+      let rec_id = parseInt(JSON.stringify(req.body.recipe_id));
+      //console.log("RecID: " + rec_id);
+      axios({
+        url: 'https://api.spoonacular.com/recipes/${rec_id}/information?includeNutrition=false?apiKey=${req.session.user.api_key}',
+        method: 'GET',
+        dataType: 'json',
+        apiKey: req.session.user.api_key,
+        params: {
+          "x-api-key": req.session.user.api_key,
+        }
+      })
+      .then((results) => {
+        const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3);"
+        results.extendedIngredients.forEach(item => {
+          console.log("item.name" + "item.measures.metric.amount");
+          db.any(query, [item.name, item.measures.metric.amount, 1])
+          .then((groceries) => {
+            // console.log("item.name" + "item.measures.metric.amount");
+            //res.redirect("/groceries");
+          })
+          .catch((err) => {
+            res.render("pages/groceries", {
+              groceries,
+              error: true,
+              message : err.message,
+            });
+          });
+
+        })
+
+      })
+      .catch((err) => {
+        console.log(err);
+        res.render("pages/groceries", {
+          groceries,
+          results: [],
+          error: true,
+          message: err.message,
+        });
+      });
     });
 
     app.get("/logout", (req, res) => {
