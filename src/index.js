@@ -187,9 +187,9 @@ const dbConfig = {
         .then((results) => {
           // the results will be displayed on the terminal if the docker containers are running
          // Send some parameters
-            console.log(results.data.recipes);
+            console.log(results);
             res.render("pages/recipes", {
-            results: results.data.recipes,
+            results: results,
           });
         })
         .catch((err) => {
