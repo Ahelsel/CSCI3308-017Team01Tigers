@@ -11,13 +11,20 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <% results.data.recipes.forEach(item => { %>
             <div class="col" style="padding:10px">
-                <div class="card" style="width:250px">
-                    <% console.log(item.image) %>
-                    <img class="card-img-top" src=<%= item.image%> >
+                <div class="card" style="width:250px; border-radius: 2em;">
+                    <% if (item.image != undefined) { %>
+                        <img class="card-img-top" style="border-radius: 2em 2em 0 0;" src=<%= item.image %> >
+                    <% } else { %>
+                        <img class="card-img-top" style="border-radius: 2em 2em 0 0;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdNQlTC9A1A5OTuZHDn_48mzTbXqnxz-lvxg&usqp=CAU">
+                    <% } %>
                     <div class="card-body">
                         <h5 class="card-title"><%= item.title %></h5>
-                        <p></p>
-                        <a href="" class="btn btn-primary">Add</a>
+                        <form method="GET" action="/getrecipe">
+                            <% console.log("Item ID: " + item.id); %>
+                            <button type="submit" class="btn btn-sm" name="recipe_id" value="<%= item.id %>" style="background-color:#3cb371; border-color:#3cb371; border-radius: 1em;">
+                                Add Ingredients
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
