@@ -188,7 +188,7 @@ const dbConfig = {
           // the results will be displayed on the terminal if the docker containers are running
          // Send some parameters
             //console.log(results);
-            console.log(results.data.recipes[0].extendedIngredients);
+            //console.log(results.data.recipes[0].extendedIngredients);
             res.render("pages/recipes", {
             results: results,
           });
@@ -206,11 +206,11 @@ const dbConfig = {
 
     app.get("/getrecipe", (req, res) => {
       //console.log("REQ BODY RECIPE ID: " + req.body.recipe_id);
-
-      let rec_id = parseInt(JSON.stringify(req.body.recipe_id));
+      console.log("REQ RECIPE ID: " + req.query.recipe_id);
+      let rec_id = req.query.recipe_id;
       //console.log("RecID: " + rec_id);
       axios({
-        url: 'https://api.spoonacular.com/recipes/${rec_id}/information?includeNutrition=false?apiKey=${req.session.user.api_key}',
+        url: `https://api.spoonacular.com/recipes/${rec_id}/information?apiKey=${req.session.user.api_key}`,
         method: 'GET',
         dataType: 'json',
         apiKey: req.session.user.api_key,
@@ -221,7 +221,7 @@ const dbConfig = {
       .then((results) => {
         const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3);"
         results.extendedIngredients.forEach(item => {
-          console.log("item.name" + "item.measures.metric.amount");
+          //console.log("item.name" + "item.measures.metric.amount");
           db.any(query, [item.name, item.measures.metric.amount, 1])
           .then((groceries) => {
             // console.log("item.name" + "item.measures.metric.amount");
@@ -241,7 +241,6 @@ const dbConfig = {
       .catch((err) => {
         console.log(err);
         res.render("pages/groceries", {
-          groceries,
           results: [],
           error: true,
           message: err.message,

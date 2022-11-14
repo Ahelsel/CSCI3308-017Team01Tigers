@@ -20,7 +20,6 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= item.title %></h5>
                         <form method="GET" action="/getrecipe">
-                            <% console.log("Item ID: " + item.id); %>
                             <button type="submit" class="btn btn-sm" name="recipe_id" value="<%= item.id %>" style="background-color:#3cb371; border-color:#3cb371; border-radius: 1em;">
                                 Add Ingredients
                             </button>
