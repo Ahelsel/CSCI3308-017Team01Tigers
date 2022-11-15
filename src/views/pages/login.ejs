@@ -2,23 +2,26 @@
 <%- include ('../partials/menu') %>
 
 <main>
-  <div class="container">
-        <h1>Login</h1>
-        <form action = "/login" method = "post">
-            <div class="col"><%- include ('../partials/message') %></div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name = "username" aria-describedby="emailHelp"
-                    placeholder="Enter username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name = "password" class="form-control" id="password" placeholder="Password">
-            </div>
-            <p>Don't have an account yet? <a href = "/register">Register</a></p>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-  </div>
+<link rel = 'stylesheet' href = '../../resources/css/project.css'>
+    <div class = "main">
+        <div class="login-menu">
+            <h1 class = "form-header">Login</h1>
+            <form action = "/login" method = "post">
+                <div class="col"><%- include ('../partials/message') %></div>
+                <div class="form-group">
+                    <label for="username" class = "label-for-input">Username</label>
+                    <input type="text" class="form-control" id="username" name = "username" aria-describedby="emailHelp"
+                        placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="password" class = "label-for-input">Password</label>
+                    <input type="password" name = "password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <p class = "space-between">Don't have an account yet? <a href = "/register">Register</a></p>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
 </main>
 
 <%- include ('../partials/footer') %>
