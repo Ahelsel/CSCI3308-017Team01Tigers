@@ -8,7 +8,14 @@ a{
 @font-face {
     font-family: Offside;
     src: url(../../resources/fonts/Offside/Offside-Regular.ttf);
-  }
+}
+@font-face{
+    font-family: FjallaOne;
+    src: url(../../resources/fonts/Fjalla_One/FjallaOne-Regular.ttf);
+}
+.nav-item{
+    font-family: 'Offside';
+}
 .input{
     font-family: 'Offside';
 }
@@ -52,6 +59,11 @@ a{
     letter-spacing: 1px;
     color: black;
 }
+.logo-header{
+    font-family: 'FjallaOne', cursive;;
+    color: #3cb371;
+    font-weight: 900;
+}
 .main{
     margin: auto;
     padding: 2%;
@@ -92,9 +104,4 @@ a{
 }
 input[type=checkbox]:checked + label {
     text-decoration: line-through;
-}
-.logo-header{
-    font-family: 'Lucida';
-    color: #3cb371;
-    font-weight: bold;
 }

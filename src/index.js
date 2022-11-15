@@ -33,6 +33,7 @@ const dbConfig = {
 
     app.use("/resources/img", express.static(__dirname + "/resources/img"))
     app.use("/resources/fonts/Offside", express.static(__dirname + "/resources/fonts/Offside"));
+    app.use("/resources/fonts/Fjalla_One", express.static(__dirname + "/resources/fonts/Fjalla_One"));
 
     app.use(
         session({
