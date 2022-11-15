@@ -31,6 +31,9 @@ const dbConfig = {
 
     app.use(bodyParser.json());
 
+    app.use("/resources/img", express.static(__dirname + "/resources/img"))
+    app.use("/resources/fonts/Offside", express.static(__dirname + "/resources/fonts/Offside"));
+
     app.use(
         session({
           secret: process.env.SESSION_SECRET,
@@ -158,7 +161,7 @@ const dbConfig = {
       const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
       const username = user.username;
     
-      const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3);"
+      const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
       db.any(query, [newGrocery, quantity, grocery_list_id])
         .then((groceries) => {
           res.redirect("/groceries");
@@ -170,6 +173,12 @@ const dbConfig = {
             message : err.message,
           });
         });
+    });
+
+    app.post("/groceries/checked", (req, res) => {
+      const { checkGrocery } = req.body;
+      console.log(checkGrocery);
+      res.render("pages/groceries");
     });
 
     app.get("/recipes", (req, res) => {
@@ -187,7 +196,12 @@ const dbConfig = {
         .then((results) => {
           // the results will be displayed on the terminal if the docker containers are running
          // Send some parameters
-            console.log(results);
+            //console.log(results);
+            let ingredient = results.data.recipes[0].extendedIngredients;
+            ingredient.forEach(el => {
+              console.log(el.nameClean);
+            })
+            console.log(results.data.recipes);
             res.render("pages/recipes", {
             results: results,
           });
@@ -201,6 +215,53 @@ const dbConfig = {
             message: err.message,
           });
         });
+    });
+
+    app.get("/getrecipe", (req, res) => {
+      //console.log("REQ BODY RECIPE ID: " + req.body.recipe_id);
+      console.log("REQ RECIPE ID: " + req.query.recipe_id);
+      let rec_id = req.query.recipe_id;
+      //console.log("RecID: " + rec_id);
+      axios({
+        url: `https://api.spoonacular.com/recipes/${rec_id}/information?apiKey=${req.session.user.api_key}`,
+        method: 'GET',
+        dataType: 'json',
+        apiKey: req.session.user.api_key,
+        params: {
+          "x-api-key": req.session.user.api_key,
+        }
+      })
+      .then((results) => {
+        console.log("RESULTS: " + results.extendedIngredients);
+
+        const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
+        results.extendedIngredients.forEach(item => {
+          if(item!= null){
+            console.log(item.name);
+          }
+          //console.log("item.name" + "item.measures.metric.amount");
+          db.any(query, [item.name, item.measures.metric.amount, 1])
+          .then((groceries) => {
+            // console.log("item.name" + "item.measures.metric.amount");
+            res.redirect("/groceries");
+          })
+          .catch((err) => {
+            res.render("pages/groceries", {
+              groceries,
+              error: true,
+              message : err.message,
+            });
+          });
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+        res.render("pages/groceries", {
+          results: [],
+          error: true,
+          message: err.message,
+        });
+      });
     });
 
     app.get("/logout", (req, res) => {

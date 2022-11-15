@@ -9,11 +9,13 @@
       <% groceries.forEach(el => { %>
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"> <%= el.name %>, <%= el.quantity %>
-              <form style = "display: inline;">              
-                <label class="checkbox-inline checkboxes">
-                  <input type="checkbox" value="">
-                </label>
+            <li class="list-group-item">
+              <form action = "/groceries/checked" method = "POST" style = "display: inline;">              
+                <!-- <label class="checkbox-inline checkboxes">
+                  <input type="checkbox" name = "checkGrocery" value="1">
+                </label> -->
+                <input type = "checkbox" id = "checkGrocery">
+                <label class = "checkbox-inline checkboxes"for= "checkGrocery"><%= el.name %>, <%= el.quantity %></label>
               </form>
             </li>
           </ul>
