@@ -54,6 +54,8 @@ Pages styled using style.css
     - "Go Groceries" and logo added to menu header
     - Added cards to the ```pages/recipes``` previewing 25 random recipes with the recipe name and image. These cards have an "add" button which would add the recipe's ingredients to the user's grocery list, but the funcitonality of the button is still not 100%. 
     - Requirements added to the password field of the register page. A user's passwords must be at least 8 characters long and contain at least one lower case letter, one upper case letter, and one number. 
-        
+    - /login:
+        - Created new layout and look for the login menu
+    - Added custom fonts and logos to enhance user esperience
     
         
