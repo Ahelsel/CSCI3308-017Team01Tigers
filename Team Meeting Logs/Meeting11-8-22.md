@@ -38,11 +38,14 @@ Add: Number of commits you've done
         - 
         - 
 
-    Kaitlyn:
-        - 
-        - 
+    Kaitlyn: 9 commits total
+        - Created basic logic for grocery list and adding to grocery list
+        - Helped on debugging API call
+        - Changed stying of login page
+        - Fixed issue with logo not rendering
+        - Created feature that crosses out grocery item when checkbox is clicked
 
-    Evan: 18 commits Total
+    Evan: 23 commits Total
         - Did Readme.md.
         - Did app.get("/groceries"). Now able to view groceries on the list, but only with a hard coded grocery_list_id at the moment.
         - Did app.post("/groceries"). Now able to add groceries and respective quantities to the list, but only with a hard coded grocery_list_id at the moment.

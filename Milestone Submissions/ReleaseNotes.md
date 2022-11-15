@@ -42,3 +42,20 @@ Pages styled using style.css
         Highlights the layout of the tables within the database, as well as the foreign and primary keys that will be used. (Located in ```/Milestone Submissions``` directory)
     - Testing Guidelines
         An outline of how testing will work for the application once it is near completion. These testing strategies will be implemented once the application is closer to completion, but the outline can be viewed in the ```Testing Assignment.pdf``` file in the ```/Milestone Submissions``` directory.
+
+## Week 3 (Tuesday, November 8 -> Tuesday, November 15)
+ 
+### New pages created:
+    - Logo.png and name.png added for use in header menu
+
+### Features Added:
+    - /groceries:
+        POST request retrieves ingredients from a recipe (from the API) and inserts them into the grocery_list_items table for a given user.
+    - "Go Groceries" and logo added to menu header
+    - Added cards to the ```pages/recipes``` previewing 25 random recipes with the recipe name and image. These cards have an "add" button which would add the recipe's ingredients to the user's grocery list, but the funcitonality of the button is still not 100%. 
+    - Requirements added to the password field of the register page. A user's passwords must be at least 8 characters long and contain at least one lower case letter, one upper case letter, and one number. 
+    - /login:
+        - Created new layout and look for the login menu
+    - Added custom fonts and logos to enhance user esperience
+    
+        
