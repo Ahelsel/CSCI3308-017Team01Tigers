@@ -38,9 +38,12 @@ Add: Number of commits you've done
         - 
         - 
 
-    Kaitlyn:
-        - 
-        - 
+    Kaitlyn: 9 commits total
+        - Created basic logic for grocery list and adding to grocery list
+        - Helped on debugging API call
+        - Changed stying of login page
+        - Fixed issue with logo not rendering
+        - Created feature that crosses out grocery item when checkbox is clicked
 
     Evan: 18 commits Total
         - Did Readme.md.
