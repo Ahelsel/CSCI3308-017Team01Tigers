@@ -35,8 +35,13 @@ Add: Number of commits you've done
      What you plan on doing for the week
 
     Anthony:
-        - 
-        - 
+        - Debug 'Random Recipe' Api call
+            - Retrieves 24 random recipes from the Spoonacular API. 
+        - Added Recipes page
+            - Cards w/Image + Title for each retrieved recipe. 
+            - Styling (rounded corners, headings, green, card spacing)
+        - Added '/getRecipe' API call that retrieves specific recipe when 'Add Ingredient' button is pressed on the Recipes card.
+        - Previous Weeks' Release Notes that we were missing.
 
     Kaitlyn: 9 commits total
         - Created basic logic for grocery list and adding to grocery list
