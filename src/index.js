@@ -158,7 +158,7 @@ const dbConfig = {
       const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
       const username = user.username;
     
-      const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3);"
+      const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
       db.any(query, [newGrocery, quantity, grocery_list_id])
         .then((groceries) => {
           res.redirect("/groceries");
@@ -216,11 +216,11 @@ const dbConfig = {
 
     app.get("/getrecipe", (req, res) => {
       //console.log("REQ BODY RECIPE ID: " + req.body.recipe_id);
-
-      let rec_id = parseInt(JSON.stringify(req.body.recipe_id));
+      console.log("REQ RECIPE ID: " + req.query.recipe_id);
+      let rec_id = req.query.recipe_id;
       //console.log("RecID: " + rec_id);
       axios({
-        url: 'https://api.spoonacular.com/recipes/${rec_id}/information?includeNutrition=false?apiKey=${req.session.user.api_key}',
+        url: `https://api.spoonacular.com/recipes/${rec_id}/information?apiKey=${req.session.user.api_key}`,
         method: 'GET',
         dataType: 'json',
         apiKey: req.session.user.api_key,
@@ -229,13 +229,18 @@ const dbConfig = {
         }
       })
       .then((results) => {
-        const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3);"
+        console.log("RESULTS: " + results.extendedIngredients);
+
+        const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
         results.extendedIngredients.forEach(item => {
-          console.log("item.name" + "item.measures.metric.amount");
+          if(item!= null){
+            console.log(item.name);
+          }
+          //console.log("item.name" + "item.measures.metric.amount");
           db.any(query, [item.name, item.measures.metric.amount, 1])
           .then((groceries) => {
             // console.log("item.name" + "item.measures.metric.amount");
-            //res.redirect("/groceries");
+            res.redirect("/groceries");
           })
           .catch((err) => {
             res.render("pages/groceries", {
@@ -244,14 +249,11 @@ const dbConfig = {
               message : err.message,
             });
           });
-
         })
-
       })
       .catch((err) => {
         console.log(err);
         res.render("pages/groceries", {
-          groceries,
           results: [],
           error: true,
           message: err.message,
