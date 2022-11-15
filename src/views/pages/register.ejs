@@ -1,19 +1,26 @@
 <%- include ('../partials/header') %>
 <%- include ('../partials/menu') %>
 
-<main>
-    <div class="container">
-      <!-- THE REST OF YOUR HTML CODE GOES HERE -->
-      <div class="col"><%- include ('../partials/message') %></div>
-      <form action="/register" method = "POST">
-          <label for ="username">Username:</label><br>
-          <input type ="text" id ="username" name="username" value =""><br>
-          <label for ="password">Password:</label><br>
-          <input type ="text" id="password" name ="password" value =""><br>
-          <input type ="submit" value="Submit"><br><br>
-      </form>
-    </div>
-  </main>
-  
 
+
+<main>
+  <div class="container">
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="username" class="form-control" name="username" id="username" aria-describedby="username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+      <p>Passwords must be at least 8 characters long and include at least:<br>1 upper case latter<br>1 lower case letter<br>1 number</p>
+
+    <!-- THE REST OF YOUR HTML CODE GOES HERE -->
+  </div>
+</main>
+  
 <%- include ('../partials/footer') %>
