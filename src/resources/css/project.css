@@ -2,6 +2,81 @@ html, body {
     height: 100%;
     overflow-y:auto;
 }
+a{
+    color: #218638;
+}
+@font-face {
+    font-family: Offside;
+    src: url(../../resources/fonts/Offside/Offside-Regular.ttf);
+  }
+.input{
+    font-family: 'Offside';
+}
+.btn-primary{
+    background-color: white;
+    border-color: #28a745;
+    color: #28a745;
+}
+.btn-primary:hover{
+    background-color:#28a745;
+    color: white;
+}
+.space-between{
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+.form-group{
+    margin-right: 8em;
+    margin-left: 8em;
+    font-family: 'Offside';
+}
+.login-form-content{
+    margin-top: 10vw;
+}
+.form-control{
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    background: white;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+}
+.form-header{
+    margin-top: 2vw;
+    display: inline-block;
+    font-size: 3vw;
+    font-family: 'Offside', cursive;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+}
+.main{
+    margin: auto;
+    padding: 2%;
+    width: 60%;
+}
+.login-menu{
+    margin-top: 4vw;
+    text-align: center;
+    justify-content: center;
+    background-image: linear-gradient(120deg, #BBDBBE
+    0%, #AFF6CF 100%);
+    box-shadow: 0 0 50px -20px #000;
+    border-radius: 2%;
+    min-height: 500px;
+}
+.label-for-input{
+    float: left;
+    margin-top: 2vw;
+    margin-bottom: 1vw;
+}
+.logo{
+    width: 2.5vw;
+    height: 2.5vw;
+    margin-right: 1vw;
+}
 .space-between-cards{
     margin: 1.5em 0;
 }
@@ -17,4 +92,9 @@ html, body {
 }
 input[type=checkbox]:checked + label {
     text-decoration: line-through;
-} /*This is the MDN spec for doing this*/
+}
+.logo-header{
+    font-family: 'Lucida';
+    color: #3cb371;
+    font-weight: bold;
+}

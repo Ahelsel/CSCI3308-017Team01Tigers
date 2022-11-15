@@ -31,6 +31,9 @@ const dbConfig = {
 
     app.use(bodyParser.json());
 
+    app.use("/resources/img", express.static(__dirname + "/resources/img"))
+    app.use("/resources/fonts/Offside", express.static(__dirname + "/resources/fonts/Offside"));
+
     app.use(
         session({
           secret: process.env.SESSION_SECRET,
