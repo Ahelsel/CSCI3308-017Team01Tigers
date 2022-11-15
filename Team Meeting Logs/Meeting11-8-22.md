@@ -34,7 +34,7 @@ Plan for next week:
 Add: Number of commits you've done
      What you plan on doing for the week
 
-    Anthony:
+    Anthony: 19 commits this week
         - Debug 'Random Recipe' Api call
             - Retrieves 24 random recipes from the Spoonacular API. 
         - Added Recipes page
