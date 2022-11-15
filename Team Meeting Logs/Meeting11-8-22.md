@@ -34,7 +34,7 @@ Plan for next week:
 Add: Number of commits you've done
      What you plan on doing for the week
 
-    Anthony: 19 Commits this week
+    Anthony: 19 commits this week
         - Debug 'Random Recipe' Api call
             - Retrieves 24 random recipes from the Spoonacular API. 
         - Added Recipes page
@@ -55,6 +55,6 @@ Add: Number of commits you've done
         - Did app.get("/groceries"). Now able to view groceries on the list, but only with a hard coded grocery_list_id at the moment.
         - Did app.post("/groceries"). Now able to add groceries and respective quantities to the list, but only with a hard coded grocery_list_id at the moment.
         - Updated create.sql tables to be more coherent, and added an insert for the hard coded grocery_list_id.
-    Sam:
-        - 
-        - 
+    Sam: 2 commits total
+        - Added feature to Register page whihc requires the user to include 8 charcaters, 1 upper case letter, 1 lower case letter, and 1 number in their password
+        - Used css file styling to style the register page similar to the login page

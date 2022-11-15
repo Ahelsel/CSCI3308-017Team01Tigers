@@ -219,7 +219,7 @@ const dbConfig = {
     });
 
     app.get("/getrecipe", (req, res) => {
-      console.log("REQ RECIPE ID: " + req.query.recipe_id);
+      //console.log("REQ RECIPE ID: " + req.query.recipe_id);
       let rec_id = req.query.recipe_id;
       axios({
         url: `https://api.spoonacular.com/recipes/${rec_id}/information?apiKey=${req.session.user.api_key}`,
@@ -231,27 +231,22 @@ const dbConfig = {
         }
       })
       .then((results) => {
-        //console.log("RESULTS: " + results.values());
         const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
+        let trigger = true;
         results.data.extendedIngredients.forEach(item => {
-        //   if(item!= null){
-        //     console.log(item.name);
-        //   }
           db.any(query, [item.name, item.measures.metric.amount, 1])
           .then((groceries) => {
-            res.redirect("/groceries");
+            console.log("GOOD");
           })
           .catch((err) => {
-            res.render("pages/groceries", {
-              groceries: [],
-              error: true,
-              message : err.message,
-            });
+            console.log("BAD: " + err)
+            trigger = false;
           });
         })
+        res.redirect("/groceries");
       })
       .catch((err) => {
-        console.log(err);
+        console.log("OUTSIDE ERROR: " + err);
         res.render("pages/groceries", {
           groceries: [],
           results: [],
