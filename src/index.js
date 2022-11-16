@@ -136,9 +136,9 @@ const dbConfig = {
       //query to list grocery list of user
       const username = user.username;
       const query = 
-        "SELECT * FROM grocery_list_items WHERE grocery_list_id = 1";
+        "SELECT * FROM grocery_list_items WHERE username = $1";
       const value = [username];
-      db.any(query, value)
+      db.any(query, value)                                              
         .then((groceries) => {
           res.render("pages/groceries", {
             groceries,
@@ -156,11 +156,11 @@ const dbConfig = {
     app.post("/groceries", (req, res) =>{
       const newGrocery = req.body.newGrocery; 
       const quantity = req.body.quantity;
-      const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
+      // const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
       const username = user.username;
     
-      const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
-      db.any(query, [newGrocery, quantity, grocery_list_id])
+      const query = "INSERT INTO grocery_list_items (name, quantity, username) VALUES ($1, $2, $3)";
+      db.any(query, [newGrocery, quantity, username])
         .then((groceries) => {
           res.redirect("/groceries");
         })
@@ -228,10 +228,10 @@ const dbConfig = {
         }
       })
       .then((results) => {
-        const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
+        const query = "INSERT INTO grocery_list_items (name, quantity, username) VALUES ($1, $2, $3)";
         let trigger = true; //what is this trigger for? 
         results.data.extendedIngredients.forEach(item => {
-          db.any(query, [item.name, item.measures.metric.amount, 1])
+          db.any(query, [item.name, item.measures.metric.amount, user.username])
           .then((groceries) => {
             console.log("GOOD");
           })
