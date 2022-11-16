@@ -1,4 +1,4 @@
-# Meeting November 11, 2022 @ 4:10 PM
+# Meeting November 15, 2022 @ 4:10 PM
 
 ## raw notes from meeting: 
 - Happy with contributions by everybody
