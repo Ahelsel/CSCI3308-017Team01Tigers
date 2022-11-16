@@ -30,7 +30,7 @@
     
 ## Things to do:
 
-###Plans for This Week:
+### Plans for This Week:
     - 95% of project done by recitation Friday 11/18/22
     - Adjust Database tables
     - Book slot for presentation
@@ -38,6 +38,7 @@
     - Sit as a team and go over the entire project, making sure that the subsections of Lab10 are fulfilled.
     - Remove branches that are no longer needed.
     - Finish User Stories. 
+    
 ## Notes:
   - After we come back from break, that particular week is supposed to be allocated for testing, but we techinically only have 4 days before presentation, which will be on Friday.
 
