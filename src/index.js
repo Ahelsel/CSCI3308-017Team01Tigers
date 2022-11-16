@@ -50,10 +50,7 @@ const dbConfig = {
       );
       app.use("/resources/css", express.static(__dirname + "/resources/css"))
 
-      //let newGroceryItems = [];
-
       app.get("/", (req, res) =>{
-        // res.redirect('/groceries');
         res.render("pages/login");
       });
 
@@ -232,7 +229,7 @@ const dbConfig = {
       })
       .then((results) => {
         const query = "INSERT INTO grocery_list_items (name, quantity, grocery_list_id) VALUES ($1, $2, $3)";
-        let trigger = true;
+        let trigger = true; //what is this trigger for? 
         results.data.extendedIngredients.forEach(item => {
           db.any(query, [item.name, item.measures.metric.amount, 1])
           .then((groceries) => {
