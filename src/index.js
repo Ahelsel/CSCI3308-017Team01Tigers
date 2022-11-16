@@ -155,13 +155,10 @@ const dbConfig = {
 
     app.post("/groceries", (req, res) =>{
       const newGrocery = req.body.newGrocery; 
-      const quantity = req.body.quantity;
-      // const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
+      const quantity = parseInt(req.body.quantity, 10);
       const username = user.username;
-      if(quantity == "" || newGrocery == ""){
-        console.log("No Item");
-      }
-      else{
+  
+      if(!isNaN(quantity) ){ // || newGrocery == ""
         const query = "INSERT INTO grocery_list_items (name, quantity, username) VALUES ($1, $2, $3)";
         db.any(query, [newGrocery, quantity, username])
         .then((groceries) => {
@@ -174,6 +171,9 @@ const dbConfig = {
             message : err.message,
           });
         });
+      }
+     else{
+        console.log("error");
       }
       
     });
