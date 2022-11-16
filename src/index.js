@@ -158,9 +158,12 @@ const dbConfig = {
       const quantity = req.body.quantity;
       // const grocery_list_id = 1;//hard coded for now, create drop down to choose grocery lists later that will fill this variable as req.body.grocery_list_id.
       const username = user.username;
-    
-      const query = "INSERT INTO grocery_list_items (name, quantity, username) VALUES ($1, $2, $3)";
-      db.any(query, [newGrocery, quantity, username])
+      if(quantity == "" || newGrocery == ""){
+        console.log("No Item");
+      }
+      else{
+        const query = "INSERT INTO grocery_list_items (name, quantity, username) VALUES ($1, $2, $3)";
+        db.any(query, [newGrocery, quantity, username])
         .then((groceries) => {
           res.redirect("/groceries");
         })
@@ -171,6 +174,8 @@ const dbConfig = {
             message : err.message,
           });
         });
+      }
+      
     });
 
     app.post("/groceries/checked", (req, res) => {
