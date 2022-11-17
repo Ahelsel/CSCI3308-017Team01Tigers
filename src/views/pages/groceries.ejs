@@ -3,29 +3,31 @@
 
 <main>
   <link rel = 'stylesheet' href = '../../resources/css/project.css'>
-    <div class = "container">
-      <div class="col"><%- include ('../partials/message') %></div>
-      <h2>Grocery List</h2>
-      <% groceries.forEach(el => { %>
-        <div class="card" style="width: 18rem;">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <form action = "/groceries/checked" method = "POST" style = "display: inline;">              
-                <!-- <label class="checkbox-inline checkboxes">
-                  <input type="checkbox" name = "checkGrocery" value="1">
-                </label> -->
-                <input type = "checkbox" id = "checkGrocery">
-                <label class = "checkbox-inline checkboxes"for= "checkGrocery"><%= el.name %>, <%= el.quantity %></label>
-              </form>
-            </li>
-          </ul>
+    <div class = "main">
+      <div class = "list">
+        <div class="col"><%- include ('../partials/message') %></div>
+        <div class = "grocery-headers">
+            <h2 class = "grocery-header">Grocery List</h2>
+            <img class = "grocery" src = "../../resources/img/groceries.gif" style = "display: inline;">
         </div>
-      <% }) %>
-      <form action = "/groceries" method = "post">
-        <input type = "text" name ="newGrocery">
-        <input type = "text" name ="quantity">
-        <button type = "submit" class = "btn btn-primary">Add Item</button> 
-      </form>
+        <% groceries.forEach(el => { %>
+          <div class="card grocery-card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <form style = "display: inline;">              
+                  <input type = "checkbox" id = "checkGrocery">
+                  <label class = "checkbox-inline checkboxes"for= "checkGrocery"><%= el.name %>: <%= el.quantity %></label>
+                </form>
+              </li>
+            </ul>
+          </div>
+        <% }) %>
+        <form action = "/groceries" method = "post" class = "adding">
+          <input type = "text" name ="newGrocery" class = "add-grocery-item">
+          <input type = "number" name ="quantity" min = "1" max = "10" value = "1">
+          <button type = "submit" class = "btn btn-primary add-item">+</button> 
+        </form>
+      </div>
     </div>
   </main>
 
