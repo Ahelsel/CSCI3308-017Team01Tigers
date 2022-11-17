@@ -13,6 +13,19 @@ a{
     font-family: FjallaOne;
     src: url(../../resources/fonts/Fjalla_One/FjallaOne-Regular.ttf);
 }
+.grocery{
+    width: 4vw;
+    height: 4vw;
+    margin-bottom: 1vw;
+    display: inline;
+}
+.card{
+    width: 18em;
+    margin-left: 15em;
+    margin-bottom: 0.25vw;
+}
+.grocery-card{
+}
 .nav-item{
     font-family: 'Offside';
 }
@@ -23,6 +36,7 @@ a{
     background-color: white;
     border-color: #28a745;
     color: #28a745;
+    font-family: 'Offside';
 }
 .btn-primary:hover{
     background-color:#28a745;
@@ -79,8 +93,37 @@ a{
     border-radius: 2%;
     min-height: 500px;
 }
+.list{
+    margin-top: 4vw;
+    text-align: center;
+    justify-content: center;
+    background-color: #C1E1C1 ;
+    border-radius: 2%;
+    min-height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.grocery-header{
+    display:initial;
+    font-family: 'Offside';
+
+}
+.col{
+    flex-grow: 0;
+}
+.adding{
+    align-self: flex-start;
+    /* collapse to own width */
+    margin-left: auto;
+    /* centering */
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 1vw;
+}
 .label-for-input{
-    float: left;
+    /* float: left; */
     margin-top: 2vw;
     margin-bottom: 1vw;
 }
@@ -94,14 +137,29 @@ a{
 }
 .checkboxes{
     float: left;
+    margin-left: 2.5vw;
+    font-family: 'Offside'
 }
 .cross-out{
     text-decoration: line-through;
 }
+.add-item{
+    margin-bottom: 0.3vw;
+    border-radius: 50%;
+}
 #checkGrocery{
-    float: right;
+    float: left;
     margin-top: 0.4em
 }
 input[type=checkbox]:checked + label {
     text-decoration: line-through;
+}
+.add-grocery-item{
+    width: 70%;
+    height: 35px;
+    font-family: 'Offside';
+}
+input[type=number]{
+    height: 35px;
+    font: 'Offside';
 }
