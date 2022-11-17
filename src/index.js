@@ -193,7 +193,7 @@ const dbConfig = {
             params: {
                 "x-api-key": req.session.user.api_key,
                 limitLicense: true,
-                "number": 25,
+                "number": 24,
             }
         })
         .then((results) => {

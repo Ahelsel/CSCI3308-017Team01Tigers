@@ -1,9 +1,13 @@
 html, body {
     height: 100%;
     overflow-y:auto;
+    background-color: #FAF7ED;
 }
 a{
     color: #218638;
+}
+a:hover{
+    color: #175f28;
 }
 @font-face {
     font-family: Offside;
@@ -13,18 +17,19 @@ a{
     font-family: FjallaOne;
     src: url(../../resources/fonts/Fjalla_One/FjallaOne-Regular.ttf);
 }
+.navbar-color{
+    background-color: white;
+}
 .grocery{
     width: 4vw;
     height: 4vw;
     margin-bottom: 1vw;
     display: inline;
 }
-.card{
+.grocery-card{
     width: 18em;
     margin-left: 15em;
     margin-bottom: 0.25vw;
-}
-.grocery-card{
 }
 .nav-item{
     font-family: 'Offside';
@@ -94,6 +99,7 @@ a{
     min-height: 500px;
 }
 .list{
+    padding: 1.5vw;
     margin-top: 4vw;
     text-align: center;
     justify-content: center;
@@ -120,12 +126,14 @@ a{
     /* centering */
     margin-right: auto;
     margin-top: auto;
-    margin-bottom: 1vw;
 }
 .label-for-input{
-    /* float: left; */
+    float: left;
     margin-top: 2vw;
     margin-bottom: 1vw;
+}
+.notice{
+    font-size: 0.6vw;
 }
 .logo{
     width: 2.5vw;
