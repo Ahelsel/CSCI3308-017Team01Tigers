@@ -16,8 +16,7 @@ CREATE TABLE grocery_list_items(
     grocery_list_items_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     quantity SMALLINT,
-    grocery_list_id SMALLINT,
-    FOREIGN KEY (grocery_list_id) REFERENCES grocery_list (grocery_list_id)
+    username VARCHAR(50)
 );
 
 DROP TABLE IF EXISTS recipes;
