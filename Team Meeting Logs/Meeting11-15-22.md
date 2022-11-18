@@ -50,6 +50,9 @@ Add: Number of commits you've done
 
     Kaitlyn: 
 
-    Evan: 
+    Evan: 32 commits Total
+      - Added logout on Menu
+      - Fixed Database so each user has their own unique grocery list that only they can view.
+      - Fixed bugs where server crashed if input boxes on groceries page were null. 
     
     Sam: 
