@@ -34,6 +34,7 @@ const dbConfig = {
     app.use("/resources/img", express.static(__dirname + "/resources/img"))
     app.use("/resources/fonts/Offside", express.static(__dirname + "/resources/fonts/Offside"));
     app.use("/resources/fonts/Fjalla_One", express.static(__dirname + "/resources/fonts/Fjalla_One"));
+    app.use("/resources/fonts/Poppins", express.static(__dirname + "/resources/fonts/Poppins"));
 
     app.use(
         session({
@@ -223,6 +224,7 @@ const dbConfig = {
     app.get("/getrecipe", (req, res) => {
       //console.log("REQ RECIPE ID: " + req.query.recipe_id);
       let rec_id = req.query.recipe_id;
+      console.log(rec_id);
       axios({
         url: `https://api.spoonacular.com/recipes/${rec_id}/information?apiKey=${req.session.user.api_key}`,
         method: 'GET',
@@ -257,6 +259,43 @@ const dbConfig = {
         });
       });
     });
+
+    app.get("/showrecipe", (req, res) => {
+      let rec_id = req.query.recipe_id;
+      axios({
+        url: `https://api.spoonacular.com/recipes/${rec_id}/analyzedInstructions?apiKey=${req.session.user.api_key}`,
+        method: 'GET',
+        dataType: 'json',
+        apiKey: req.session.user.api_key,
+        params: {
+          "id": parseInt(rec_id),
+          stepBreakdown: false,
+          "x-api-key": req.session.user.api_key,
+        }
+      })
+      .then((results)=> {
+        // results.data[0].steps.forEach(item => {
+        //   console.log(item.step);
+        //   console.log(item.ingredients);
+        // })
+        results.data[0].steps.forEach(item => {
+          item.ingredients.forEach(ingredient => {
+            console.log(ingredient.name);
+          })
+        })
+        res.render("pages/recipedetails", {
+          results: results
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+        res.render("pages/recipes", {
+          results: [],
+          error: true,
+          message: err.message,
+        });
+      })
+    })
 
     app.get("/logout", (req, res) => {
       req.session.destroy();

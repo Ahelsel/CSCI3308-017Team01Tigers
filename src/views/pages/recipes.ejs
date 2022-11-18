@@ -4,24 +4,29 @@
 
 <main>
   <div class="container">
-    <h2 style="padding-top: 10px;">Recipes</h2>
+    <h2 class = "recipe-heading"style="padding-top: 10px;">Recipes</h2>
     <div class="col"><%- include ('../partials/message') %></div>
     
     <!-- Putting the Recipes into cards -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <% results.data.recipes.forEach(item => { %>
             <div class="col" style="padding:10px">
-                <div class="card" style="width:250px; border-radius: 2em;">
+                <div class="card recipe-card" style="width:250px; border-radius: 2em;">
                     <% if (item.image != undefined) { %>
-                        <img class="card-img-top" style="border-radius: 2em 2em 0 0;" src=<%= item.image %> >
+                        <img class="card-img-top recipe-image" src=<%= item.image %> >
                     <% } else { %>
-                        <img class="card-img-top" style="border-radius: 2em 2em 0 0;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdNQlTC9A1A5OTuZHDn_48mzTbXqnxz-lvxg&usqp=CAU">
+                        <img class="card-img-top recipe-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdNQlTC9A1A5OTuZHDn_48mzTbXqnxz-lvxg&usqp=CAU">
                     <% } %>
                     <div class="card-body">
                         <h5 class="card-title"><%= item.title %></h5>
-                        <form method="GET" action="/getrecipe">
-                            <button type="submit" class="btn btn-sm" name="recipe_id" value="<%= item.id %>" style="background-color:#3cb371; border-color:#3cb371; border-radius: 1em;">
+                        <form method="GET" action="/getrecipe" class = "display-inline">
+                            <button type="submit" class="btn btn-sm recipe-buttons" name="recipe_id" value="<%= item.id %>" >
                                 Add Ingredients
+                            </button>
+                        </form>
+                        <form method = "GET" action = "/showrecipe">
+                            <button type = "submit"  class = "btn btn-sm recipe-buttons" name = "recipe_id" value="<%= item.id %>">
+                                Show Recipe
                             </button>
                         </form>
                     </div>
