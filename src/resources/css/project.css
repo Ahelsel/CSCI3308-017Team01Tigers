@@ -48,6 +48,7 @@ a:hover{
     color: white;
 }
 .space-between{
+    font-family: 'Offside';
     margin-top: 2vw;
     margin-bottom: 2vw;
 }
@@ -159,9 +160,21 @@ a:hover{
     float: left;
     margin-top: 0.4em
 }
-input[type=checkbox]:checked + label {
-    text-decoration: line-through;
+.logout{
+    font-family: 'FjallaOne';
+    text-align: center;
+    margin-top: revert;
+    color: #3cb371;
+    font-size: 4.5vw;
 }
+.logout-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 15vw;
+    width: 15vw;
+}
+
 .add-grocery-item{
     width: 70%;
     height: 35px;
@@ -170,4 +183,7 @@ input[type=checkbox]:checked + label {
 input[type=number]{
     height: 35px;
     font: 'Offside';
+}
+input[type=checkbox]:checked + label {
+    text-decoration: line-through;
 }
