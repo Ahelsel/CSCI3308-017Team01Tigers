@@ -1,0 +1,43 @@
+<%- include ('../partials/header') %>
+<%- include ('../partials/menu') %>
+
+
+<main>
+  <div class="container">
+    <div class="col"><%- include ('../partials/message') %></div>
+    <h1 class = "recipe-name"> <%= results.data[0].name %></h1>
+    <h3 class = "recipe-secondary-header">Instructions</h3>
+    <!-- Putting the Recipes into cards -->
+    <div>
+        <% results.data[0].steps.forEach(item => { %>
+            <div>
+                <ul class = "detail-list">
+                    <li>
+                        <%= item.step %>
+                    </li>
+                    <br>
+                </ul>
+            </div>
+        <% }) %>
+    </div>
+    <h3 class = "recipe-secondary-header">Ingredients</h3>
+    <div>
+        <% results.data[0].steps.forEach(item => { %>
+            <% item.ingredients.forEach(ingredient => { %>
+                <ul class = "detail-list">
+                    <li>
+                        <%= ingredient.name %>
+                    </li>
+                </ul>
+                <!-- <form method="GET" action="/getrecipe">
+                    <button type="submit" class="btn btn-sm" name="recipe_id" value="<%= ingredient.id %>" style="background-color:#3cb371; border-color:#3cb371; border-radius: 1em;">
+                        Add Ingredients
+                    </button>
+                </form> -->
+            <% }) %>
+        <% }) %>
+    </div>
+  </div>
+</main>
+
+<%- include ('../partials/footer') %>

@@ -17,6 +17,10 @@ a:hover{
     font-family: FjallaOne;
     src: url(../../resources/fonts/Fjalla_One/FjallaOne-Regular.ttf);
 }
+@font-face{
+    font-family: Poppins;
+    src: url(../../resources/fonts/Poppins/Poppins-Regular.ttf);
+}
 .navbar-color{
     background-color: white;
 }
@@ -186,4 +190,51 @@ input[type=number]{
 }
 input[type=checkbox]:checked + label {
     text-decoration: line-through;
+}
+.recipe-heading{
+    font-family: 'FjallaOne';
+    color: #3cb371;
+    font-size: 3vw;
+}
+.recipe-name{
+    font-family: 'FjallaOne';
+    color: #3cb371;
+    font-size: 3vw;
+}
+.recipe-secondary-header{
+    font-family: 'Offside';
+    color:#3cb371;
+    font-size: 2vw;
+    padding: 2vw;
+}
+.detail-list{
+    font-family: 'Poppins';
+}
+.detail-list li:after {
+    content: "\A";
+    white-space: pre;
+}
+.recipe-buttons{
+    background-color:#3cb371;
+    border-color:#3cb371;
+    border-radius: 1em;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: none;
+    font-family: 'Offside';
+}
+.display-inline{
+    display: inline-block;
+    vertical-align: bottom;
+}
+.recipe-image{
+    border-radius: 2em 2em 0 0;
+}
+.recipe-card{
+    width:250px; 
+    border-radius: 2em;
+}
+.card-title{
+    font-family: 'Offside';
 }
