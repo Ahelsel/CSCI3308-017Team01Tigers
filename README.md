@@ -4,7 +4,7 @@
 
 ## Application Description:
 
-For the average college student, Go Groceries offers simplicity to the grocery-buying process, with the ability to type in a grocery item and the quantity to populate your grocery list. Once the item is obtained, users can check the item which will take it off the list. When adding a recipe. 
+Users can register, login, and logout with our application. Once logged in Go Groceries offers simplicity to the grocery-buying process, with the ability to type in a grocery item and the quantity to populate your grocery list. Once the item is obtained, users can check off the item, which will take it off the list. 
 
 In order to save on time and add more variety, we'll populate our recipes from the trustworthy recipe API *Spoonacular*. These recipes will be displayed in a different tab in a grid layout where users can view the recipes and have an option to add the recipe to their grocery list. 
 
