@@ -1,8 +1,0 @@
- In the first meeting (during lab session), we decided on the project topic (Grocery List) as well as:
- 1. Created a Github Repository
- 2. Created a Github Project Board
- 3. Created a Use Case Diagram
- 4. Created a Google Doc outlinined our Project/Plan
- 5. Created a Wireframe showcasing what our Grocery List might look like
- 
- We also decided on future meeting time, when we will meet with our TA, and also how we will communicate with each other (Discord). 
