@@ -160,7 +160,7 @@ const dbConfig = {
       const quantity = parseInt(req.body.quantity, 10);
       const username = user.username;
   
-      if(!isNaN(quantity) ){ // || newGrocery == ""
+      if(!isNaN(quantity) && newGrocery !== ""){ // || newGrocery == ""
         const query = "INSERT INTO grocery_list_items (name, quantity, username) VALUES ($1, $2, $3)";
         db.any(query, [newGrocery, quantity, username])
         .then((groceries) => {
