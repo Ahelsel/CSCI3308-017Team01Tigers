@@ -103,6 +103,16 @@ a:hover{
     border-radius: 2%;
     min-height: 500px;
 }
+.register-menu{
+    margin-top: 4vw;
+    text-align: center;
+    justify-content: center;
+    background-image: linear-gradient(120deg, #77EED8
+    0%, #9EABE4 100%);
+    box-shadow: 0 0 50px -20px #000;
+    border-radius: 2%;
+    min-height: 500px;
+}
 .list{
     padding: 1.5vw;
     margin-top: 4vw;
