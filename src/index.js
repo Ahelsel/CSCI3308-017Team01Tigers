@@ -30,6 +30,7 @@ const dbConfig = {
     app.set("view engine", "ejs");
 
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }))
 
     app.use("/resources/img", express.static(__dirname + "/resources/img"))
     app.use("/resources/fonts/Offside", express.static(__dirname + "/resources/fonts/Offside"));
@@ -180,9 +181,19 @@ const dbConfig = {
     });
 
     app.post("/groceries/checked", (req, res) => {
-      const { checkGrocery } = req.body;
-      //console.log(checkGrocery);
-      res.render("pages/groceries");
+      const deletedGrocery = req.body.checkedGrocery;
+      const query = `DELETE FROM grocery_list_items WHERE name = $1;`;
+      db.any(query, [deletedGrocery])
+      .then(() => {
+        res.redirect("/groceries")
+      })
+      .catch((err) => {
+        res.render("pages/groceries", {
+          groceries: [],
+          error: true,
+          message: err.message
+        });
+      });
     });
 
     app.get("/recipes", (req, res) => {

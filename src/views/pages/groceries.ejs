@@ -14,8 +14,9 @@
           <div class="card grocery-card">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <form style = "display: inline;">              
-                  <input type = "checkbox" id = "checkGrocery">
+                <form method = "post" action = "/groceries/checked" style = "display: inline;">      
+                  <input type = "hidden" id ="<%- el.name %>"  name = "checkedGrocery" value = "<%- el.name %>">        
+                  <input type = "checkbox" id = "checkGrocery" onChange="this.form.submit()">
                   <label class = "checkbox-inline checkboxes"for= "checkGrocery"><%= el.name %>: <%= el.quantity %></label>
                 </form>
               </li>
